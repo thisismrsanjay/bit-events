@@ -3,7 +3,7 @@ import EventListAttendee from "./EventListAttendee";
 
 class EventListItem extends Component {
   render() {
-    const {event} = this.props;
+    const {event,onEventEdit,deleteEvent} = this.props;
     return (
       <div className="card text-left mb-3 shadow  bg-white ">
         <div className="card-body border-bottom p-1 rounded ">
@@ -28,16 +28,13 @@ class EventListItem extends Component {
           
         </div>
         <div className="card-footer text-muted ">
-        <div className="gird">
-          <div className="row">
-            <div className="col-md-10">
+        
               {event.description}
-            </div>
-            <div className="col-md-2">
-             <button className="btn btn-primary  float-right ">View</button>
-            </div>
-          </div>
-        </div>
+           
+             <button onClick={deleteEvent(event.id)}className="btn btn-danger  float-right ">Delete</button>
+             <button onClick={onEventEdit(event)}className="btn btn-primary  float-right ">View</button>
+            
+         
        
        
         </div>

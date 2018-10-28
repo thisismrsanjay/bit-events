@@ -1,8 +1,3 @@
-* [x] component hirerarchy
-
-* [x] best way to bind
-
-* [x] form control in react 
+* after CRUD
 
 
-![git hub ](https://github.com/thisismrsanjay/bit-events/blob/master/Capture.PNG)
