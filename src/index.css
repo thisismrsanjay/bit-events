@@ -2,7 +2,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgb(234, 234, 234);
 }
+.masthead {
+  background-image: linear-gradient(
+    135deg,
+    rgb(24, 42, 115) 0%,
+    rgb(33, 138, 174) 69%,
+    rgb(32, 167, 172) 89%
+  ) !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .navbar {
   background-image: linear-gradient(
     135deg,
@@ -13,4 +26,7 @@ body {
 }
 #event{
   padding-top:150px;
+}
+.active{
+  background: rgba(247, 241, 241, 0.397);
 }
