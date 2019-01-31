@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 //configuring extension 
 import {composeWithDevTools} from 'redux-devtools-extension';
 

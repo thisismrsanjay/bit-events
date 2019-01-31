@@ -1,0 +1,47 @@
+.bookmark {
+    padding: 10px 0;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    top: -0.3em;
+    right: 1em;
+    background: #be010c;
+    background: -moz-linear-gradient(top, #be010c 0%, #930109 76%, #710106 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #be010c), color-stop(76%, #930109), color-stop(100%, #710106));
+    background: -webkit-linear-gradient(top, #be010c 0%, #930109 76%, #710106 100%);
+    background: -o-linear-gradient(top, #be010c 0%, #930109 76%, #710106 100%);
+    background: -ms-linear-gradient(top, #be010c 0%, #930109 76%, #710106 100%);
+    background: linear-gradient(to bottom, #be010c 0%, #930109 76%, #710106 100%);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#be010c', endColorstr='#710106', GradientType=0);
+    -webkit-box-shadow: 0 1px 1px 0 #333333;
+    -moz-box-shadow: 0 1px 1px 0 #333333;
+    box-shadow: 0 1px 1px 0 #333333;
+  }
+  .bookmark:before {
+    content: "";
+    position: absolute;
+    bottom: -0.2em;
+    left: 0;
+    border-style: solid;
+    border-width: 0 0 1em 1.5em;
+    border-color: #ffffff transparent #ffffff transparent;
+    display: block;
+    width: 0;
+    height: 0;
+    z-index: 1;
+  }
+  .bookmark:after {
+    content: "";
+    position: absolute;
+    bottom: -0.2em;
+    right: 0;
+    border-style: solid;
+    border-width: 0 1.5em 1em 0;
+    border-color: #ffffff transparent #ffffff transparent;
+    display: block;
+    width: 0;
+    height: 0;
+    z-index: 1;
+  }

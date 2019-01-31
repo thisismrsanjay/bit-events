@@ -61,9 +61,12 @@ const eventReducer = (state=initialState,action)=>{
         case "CREATE_EVENT":
             return [...state,Object.assign({},action.payload.event)];
         case "UPDATE_EVENT":
-            return 
+            return [
+              ...state.filter(event=>event.id!==action.payload.event.id),
+              Object.assign({},action.payload.event)
+            ]
         case "DELETE_EVENT":
-            return 
+            return [...state.filter(event=>event.id!==action.payload.eventId)]
         default:
             return state;
     }
