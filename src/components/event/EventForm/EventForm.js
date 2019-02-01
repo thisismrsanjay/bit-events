@@ -1,42 +1,54 @@
 import React ,{Component} from 'react';
+import {connect} from 'react-redux';
+import {createEvent,updateEvent} from '../eventActions';
+import cuid from 'cuid';
 
 
-const emptyEvent ={
-            title:'',
-            date:'',
-            city:'',
-            venue:'',
-            hostedBy:'',
-            attendees:[]
-        
+const mapStateToProps =(state,ownProps)=>{
+    const eventId = ownProps.match.params.id;
+    let event = {
+        title:'',
+        date:'',
+        city:'',
+        venue:'',
+        hostedBy:'',
+        attendees:[] 
     }
+    if(eventId && state.events.length>0){
+        event = state.events.filter(event=>event.id===eventId)[0];
+    }
+    return {
+        event
+    }
+}
+const actions ={
+    createEvent,
+    updateEvent
+}
+
 class EventForm extends Component {
     
     state={
-        event:emptyEvent
+        event:Object.assign({},this.props.event)
     }
 
-    componentDidMount(){
-         if(this.props.selectedEvent != null){
-             this.setState({
-                 event:this.props.selectedEvent
-             })
-         }
-    }
-    componentWillReceiveProps(nextProps){
-        if(nextProps.selectedEvent !== this.props.selectedEvent){
-            this.setState({
-                event:nextProps.selectedEvent|| emptyEvent
-            })
-        }
-    }
+
 
     onFormSubmit= (event)=>{
         event.preventDefault();
         if(this.state.event.id){
             this.props.updateEvent(this.state.event);
+            //go back simon
+            this.props.history.goBack();
         }else{
-            this.props.createEvent(this.state.event);
+            const newEvent={
+                ...this.state.event,
+                id:cuid(),
+                hostPhotoURL:'/assets/user.png'
+            }
+            this.props.createEvent(newEvent);
+            //redirect ??
+            this.props.history.push('/events');
         }
     }
     onInputChange=(event)=>{
@@ -47,10 +59,10 @@ class EventForm extends Component {
         })
     }
     render(){
-        const {handleCancel} = this.props;
+    
         const {event} = this.state;
         return(
-            <div className="card   card-form mt-3">
+            <div className="card   card-form ">
             <div className="card-body">
                 <form onSubmit={this.onFormSubmit}>
                     <div className="form-group">
@@ -75,10 +87,10 @@ class EventForm extends Component {
                     </div>
                     <input type="submit" className="btn btn-success mb-3"/>
                 </form>
-                    <button onClick={handleCancel}className="btn btn-default " >Cancel</button>
+                    <button onClick={this.props.history.goBack}className="btn btn-default " >Cancel</button>
             </div>
         </div>
         )
     }
 }
-export default EventForm;
+export default connect(mapStateToProps,actions)(EventForm);

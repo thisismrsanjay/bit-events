@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 class EventListItem extends Component {
   render() {
-    const { event, onEventEdit, deleteEvent } = this.props;
+    const { event, deleteEvent } = this.props;
     return (
       <div className="card text-left mb-3 shadow  bg-white ">
         <div className="card-body border-bottom p-1 rounded ">

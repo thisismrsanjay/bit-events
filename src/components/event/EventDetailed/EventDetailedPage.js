@@ -4,23 +4,21 @@ import EventDetailedHeader from './EventDetailedHeader';
 import EventDetailedInfo from './EventDetailedInfo';
 import EventDetailedDiscussion from './EventDetailedDiscussion'
 import EventDetailedSidebar from './EventDetailedSidebar';
-import { STATUS_CODES } from 'http';
+// import { STATUS_CODES } from 'http';
 
 const mapStateToProps= (state,ownProps)=>{
     const eventId = ownProps.match.params.id;
     let event = {};
     if(eventId && state.events.length>0){
-        event = state.events.filter(event=>event.id==eventId)[0]
+        event = state.events.filter(event=>event.id===eventId)[0]
     }
     return {
         event
     }
 }
-const actions = ()=>{
 
-}
 
-//event will be componet props
+//event will be component props
 const EventDetailedPage = ({event}) =>{
     return (
         <div className="container pt-3">

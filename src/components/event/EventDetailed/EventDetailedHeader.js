@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const eventImageStyle = {
   filter: "brightness(30%)"
@@ -32,9 +33,18 @@ const EventDetailedHeader=({event}) =>{
         </p>
       </div>
       <div className="card-body">
-        <button href="#" className="btn btn-primary">
+      <button href="#" className="btn btn-default">
+         Cancel My Place
+        </button>
+        <button href="#" className="btn btn-info ml-2">
           JOIN THIS EVENT
         </button>
+        <Link to={`/manage/${event.id}`}>
+         <button className="btn btn-warning float-right">
+          Manage Event
+        </button>
+        </Link>
+       
       </div>
     </div>
   );
