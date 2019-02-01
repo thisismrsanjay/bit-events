@@ -30,7 +30,7 @@ class App extends Component {
               <Route path="/people" component={PeopleDashboard} />
               <Route path="/profile/:id" component={UserDetailedPage} />
               <Route path="/settings" component={SettingsDashboard} />
-              <Route path="/createEvent" component={EventForm} />
+              <Route  path="/createEvent" component={EventForm} />
               {/* <Route path="*" component ={NotFound} /> */}
             </Switch>
           </div>

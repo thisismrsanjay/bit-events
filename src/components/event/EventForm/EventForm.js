@@ -8,6 +8,8 @@ const mapStateToProps =(state,ownProps)=>{
     const eventId = ownProps.match.params.id;
     let event = {
         title:'',
+        category:'',
+        description:'',
         date:'',
         city:'',
         venue:'',
@@ -62,12 +64,20 @@ class EventForm extends Component {
     
         const {event} = this.state;
         return(
-            <div className="card   card-form ">
+            <div className="card   card-form container mt-5">
             <div className="card-body">
                 <form onSubmit={this.onFormSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Event Title</label>
                         <input name="title" onChange={this.onInputChange}  value={event.title} type="text" className="form-control form-control-lg" placeholder="Event Title"/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="category">Category</label>
+                        <input name="category" onChange={this.onInputChange}  value={event.category}  type="text" className="form-control form-control-lg" placeholder="Event Category "/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="description">Description</label>
+                        <textarea name="description" onChange={this.onInputChange}  value={event.description}  type="text" className="form-control form-control-lg" placeholder="Event Description " rows="4"></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="date">Event Date</label>

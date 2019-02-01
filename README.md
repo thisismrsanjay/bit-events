@@ -15,6 +15,15 @@
     * Global Auth State
 
 
+##To do 
+*[] add external link support ?
+
+
+
+##Bugs
+
+* when in manage/id hide-> createEvent 
+
 
 
 ##Redux Basics
