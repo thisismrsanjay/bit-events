@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EventList from "../EventList/EventList";
 import {deleteEvent} from '../eventActions';
+import {addFlashMessage} from '../../../app/actions/flashMessagesAction';
 
 const mapStateToProps = (state) => ({
   events:state.events
@@ -9,6 +10,7 @@ const mapStateToProps = (state) => ({
 
 const actions ={
   deleteEvent,
+  addFlashMessage
 }
 
 class EventDashboard extends Component {
@@ -21,14 +23,18 @@ class EventDashboard extends Component {
     // this.setState({
     //   events: updatedEvents
     // });
+    this.props.addFlashMessage({
+      type:"success",
+      text:"Event Deleted Successfully 😊"
+  })
     this.props.deleteEvent(eventId);
   };
 
   render() {
     const {events} = this.props;
-
     return (
       <div className="container " id="event">
+        
         <div className="row">
           <div className="col-lg-8">
             <EventList

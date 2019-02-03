@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
 import {connect} from 'react-redux';
 import {createEvent,updateEvent} from '../eventActions';
+import {addFlashMessage} from '../../../app/actions/flashMessagesAction';
 import cuid from 'cuid';
 
 
@@ -25,7 +26,8 @@ const mapStateToProps =(state,ownProps)=>{
 }
 const actions ={
     createEvent,
-    updateEvent
+    updateEvent,
+    addFlashMessage
 }
 
 class EventForm extends Component {
@@ -49,6 +51,12 @@ class EventForm extends Component {
                 hostPhotoURL:'/assets/user.png'
             }
             this.props.createEvent(newEvent);
+
+            //flashMessage dispatching action
+            this.props.addFlashMessage({
+                type:"success",
+                text:"Event Created Successfully 😊"
+            })
             //redirect ??
             this.props.history.push('/events');
         }

@@ -17,6 +17,8 @@
 
 ##To do 
 *[] add external link support ?
+*[] map??
+*[] message partial done✔
 
 
 
