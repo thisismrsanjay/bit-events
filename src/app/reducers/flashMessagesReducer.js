@@ -9,7 +9,10 @@ import uuid from 'uuid';
                 ...state,
                 Object.assign({id:uuid()},action.payload.message)
             ]
-
+        case "DELETE_FLASH_MESSAGE":
+            return [
+                 ...state.filter(message=>message.id!==action.payload.messageId)
+            ]
         default :return state;
     }
     

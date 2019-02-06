@@ -41,7 +41,7 @@ class NavBar extends Component {
                 alt=""
                 className="d-inline-block align-top mr-2"
               />
-              Bit-Events
+              EventUp
             </Link>
 
             <div className="navbar-nav">

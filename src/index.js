@@ -15,9 +15,15 @@ import { createStore,applyMiddleware,compose } from "redux";
 import rootReducer from './app/reducers/rootReducer';
 import thunk from 'redux-thunk';
 
+//load event
+import {loadEvents} from './components/event/eventActions';
+
+
 const store = createStore(rootReducer,compose(applyMiddleware(thunk),
 window.__REDUX_DEVTOOLS_EXTENSION__?window.__REDUX_DEVTOOLS_EXTENSION__():f=>f
 ));
+
+store.dispatch(loadEvents());
 
 ReactDOM.render(
   <Provider store={store}>

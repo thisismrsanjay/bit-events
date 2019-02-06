@@ -3,15 +3,9 @@ import { connect } from "react-redux";
 import EventList from "../EventList/EventList";
 import {deleteEvent} from '../eventActions';
 import {addFlashMessage} from '../../../app/actions/flashMessagesAction';
+import EventActivity from '../EventActivity/EventActivity';
+import LoadingComponent from '../../../app/layout/LoadingComponent';
 
-const mapStateToProps = (state) => ({
-  events:state.events
-});
-
-const actions ={
-  deleteEvent,
-  addFlashMessage
-}
 
 class EventDashboard extends Component {
 
@@ -31,7 +25,8 @@ class EventDashboard extends Component {
   };
 
   render() {
-    const {events} = this.props;
+    const {events,loading} = this.props;
+    if(loading) return <LoadingComponent/>
     return (
       <div className="container " id="event">
         
@@ -41,14 +36,27 @@ class EventDashboard extends Component {
               deleteEvents={this.handleDeleteEvent}
               events={events}
             />
+            
           </div>
           <div className="col-lg-4">
-            
+            <EventActivity/>
           </div>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  events:state.events,
+  loading:state.async.loading
+});
+
+const actions ={
+  deleteEvent,
+  addFlashMessage
+}
+
+
 
 export default connect(mapStateToProps,actions)(EventDashboard);

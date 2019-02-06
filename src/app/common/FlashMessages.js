@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./FlashMessage.css";
 import { connect } from "react-redux";
+import { deleteFlashMessage } from "../actions/flashMessagesAction";
 
 const mapStateToProps = state => {
   return {
@@ -8,24 +9,25 @@ const mapStateToProps = state => {
   };
 };
 
-// const mapDispachToProps = dispatch => {
-//   return {
-
-//   };
-// };
-
+const mapDispachToProps = {
+  deleteFlashMessage
+};
 
 class FlashMessages extends Component {
-
-  
-
   render() {
-  console.log(this.props.messages);
     return (
       <div>
-        { this.props.messages.map((message,index) => (
-          <div key={index} className="webform-confirmation">
-            <div   className="success-container">
+        {this.props.messages.map(message => (
+          <div key={message.id} className="webform-confirmation">
+            <div className="success-container">
+
+              <div style={{display:"none"}}>
+                {setTimeout(() => {
+                this.props.deleteFlashMessage(message.id);
+              }, 3000)}
+              </div>
+              
+
               <img
                 src="http://form.swansonrussell.com/sites/default/files/_images/content/checkmark-2x.png"
                 alt=""
@@ -34,7 +36,7 @@ class FlashMessages extends Component {
               />
               <div className="success-copy">
                 <p>
-                  {message.text }
+                  {message.text}
                   Thank You,
                   <br /> your submission has been received.
                 </p>
@@ -47,4 +49,7 @@ class FlashMessages extends Component {
   }
 }
 
-export default connect(mapStateToProps)(FlashMessages);
+export default connect(
+  mapStateToProps,
+  mapDispachToProps
+)(FlashMessages);

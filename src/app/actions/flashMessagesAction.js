@@ -6,3 +6,11 @@ export const addFlashMessage =(message)=>{
         }
     }
 }
+export const deleteFlashMessage =(messageId)=>{
+    return {
+        type:"DELETE_FLASH_MESSAGE",
+        payload:{
+            messageId
+        }
+    }
+}
